@@ -1,5 +1,5 @@
 'use client';
-
+import { VoiceButton } from '@/components/scenarios/VoiceButton';
 import { useState, useRef, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -14,7 +14,8 @@ import {
   User,
   MapPin,
   Trophy,
-  Play
+  Play,
+  MessageCircle
 } from 'lucide-react';
 import Link from 'next/link';
 import { getScenarioById } from '@/lib/scenarios';
@@ -281,6 +282,43 @@ export default function ScenarioDetail() {
           </div>
         </div>
       </div>
+      {/* Voice Mode Section */}
+        {!conversationStarted && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 mb-6 border border-slate-600"
+          >
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-white mb-2">Choose Your Practice Mode</h3>
+              <p className="text-slate-300 mb-6">
+                Practice with {persona.name} using text chat or voice conversation
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                {/* Text Mode Button */}
+                <Button
+                  onClick={startConversation}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Text Chat Practice
+                </Button>
+                
+                {/* Voice Mode Button */}
+                <VoiceButton
+                  scenarioId={scenarioId}
+                  difficulty={scenario.difficulty}
+                  userId={userData?.id || 'demo'}
+                />
+              </div>
+              
+              <div className="mt-4 text-sm text-slate-400">
+                Both modes provide real-time feedback and coaching tips
+              </div>
+            </div>
+          </motion.div>
+        )}
 
       {/* Persona Info Bar */}
       <div className="border-b border-slate-800 bg-slate-800/50">
