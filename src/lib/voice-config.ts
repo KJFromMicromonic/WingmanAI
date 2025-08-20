@@ -3,22 +3,22 @@ export const VOICE_AGENT_CONFIG = {
     scenarioConfigs: {
       'cafe-1': {
         agentName: 'wingman-emma',
-        scenario: 'Coffee Shop Crush',
+        scenario: 'Cafe Redezvous',
         persona: 'Emma',
         voice: 'en-US-Neural2-F',
         description: 'Practice casual conversation in a coffee shop setting'
       },
       'gym-1': {
-        agentName: 'wingman-alex',
+        agentName: 'wingman-taylor',
         scenario: 'Gym Approach',
-        persona: 'Alex', 
+        persona: 'Taylor', 
         voice: 'en-US-Neural2-D',
         description: 'Practice fitness-focused conversations with a trainer'
       },
       'bookstore-1': {
-        agentName: 'wingman-maya',
+        agentName: 'wingman-sam',
         scenario: 'Bookstore Browse',
-        persona: 'Maya',
+        persona: 'Sam',
         voice: 'en-US-Neural2-H',
         description: 'Practice literary discussions in a bookstore'
       },
@@ -30,9 +30,9 @@ export const VOICE_AGENT_CONFIG = {
         description: 'Practice social networking in a bar setting'
       },
       'park-1': {
-        agentName: 'wingman-sam',
+        agentName: 'wingman-alex',
         scenario: 'Park Walk',
-        persona: 'Sam',
+        persona: 'Alex',
         voice: 'en-US-Neural2-C',
         description: 'Practice mindful conversations during a nature walk'
       },

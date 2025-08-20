@@ -20,7 +20,7 @@ export interface Scenario {
 const scenarios: Scenario[] = [
   {
     id: 'cafe-1',
-    title: 'Coffee Shop Crush',
+    title: 'Cafe Rendezvous',
     description: 'Practice casual conversation with someone reading in a cozy café',
     setting: 'A warm, bustling coffee shop with soft jazz music playing',
     difficulty: 'beginner',
@@ -37,7 +37,7 @@ const scenarios: Scenario[] = [
     setting: 'A sunny park with walking trails and people exercising',
     difficulty: 'beginner',
     isPremium: false,
-    image: 'https://images.unsplash.com/photo-1470071459604-3b5ec6c3a7fe05?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1585938389612-a552a28d6914?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     category: 'Casual',
     personaId: 'alex-fitness',
     tags: ['outdoors', 'exercise', 'healthy', 'morning']
