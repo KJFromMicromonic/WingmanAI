@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  wingman-agent:
+    build: .
+    container_name: wingman-agent
+    restart: unless-stopped
+    environment:
+      - LIVEKIT_URL=${LIVEKIT_URL}
+      - LIVEKIT_API_KEY=${LIVEKIT_API_KEY}
+      - LIVEKIT_API_SECRET=${LIVEKIT_API_SECRET}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - DEEPGRAM_API_KEY=${DEEPGRAM_API_KEY}
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/service-account.json
+      - PYTHONPATH=/app
+    volumes:
+      - ./service-account.json:/app/service-account.json:ro
+      - ./logs:/app/logs
+    ports:
+      - "8080:8080"  # If you add HTTP API endpoints
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a reverse proxy for multiple agent instances
+  nginx:
+    image: nginx:alpine
+    container_name: wingman-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - wingman-agent
+    restart: unless-stopped
+    profiles:
+      - proxy
+
+networks:
+  default:
+    name: wingman-network

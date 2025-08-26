@@ -43,15 +43,15 @@ const personas: Persona[] = [
     responseStyle: 'Motivational and positive, talks about health and fitness, shares tips'
   },
   {
-    id: 'sam-literary',
-    name: 'Sam',
+    id: 'maya-literary',
+    name: 'Maya',
     age: 31,
     occupation: 'Bookstore Owner',
     traits: 'Knowledgeable, calm, loves discussing ideas, slightly introverted but passionate',
     tone: 'Thoughtful, informative, quietly enthusiastic',
     interests: ['literature', 'philosophy', 'classical music', 'tea', 'book collecting'],
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-    backstory: 'Sam inherited a small independent bookstore and turned it into a community hub. They host book clubs and poetry readings.',
+    backstory: 'Maya inherited a small independent bookstore and turned it into a community hub. They host book clubs and poetry readings.',
     responseStyle: 'Well-read responses, recommends books, discusses deeper meanings'
   },
   {

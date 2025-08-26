@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { MessageCircle, Trophy, Mic, Zap } from 'lucide-react';
+import { ChatInterface } from '@/components/ui/chat-interface';
 
 /**
  * Home page component for WingMan AI.
@@ -14,6 +16,13 @@ import { MessageCircle, Trophy, Mic, Zap } from 'lucide-react';
  * @returns JSX element representing the home page
  */
 export default function Home() {
+  const router = useRouter();
+
+  const handleChatInteraction = () => {
+    // Redirect to sign-in page when user tries to interact
+    router.push('/auth/sign-in');
+  };
+
   const features = [
     {
       icon: MessageCircle,
@@ -67,23 +76,8 @@ export default function Home() {
               Build your social skills without fear of rejection.
             </motion.p>
             
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Link href="/auth/sign-up">
-                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                  Start Free Trial
-                </Button>
-              </Link>
-              <Link href="/dashboard">
-                <Button variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800 hover:text-white px-8 py-4 text-lg font-semibold">
-                  View Demo
-                </Button>
-              </Link>
-            </motion.div>
+            {/* Chat Interface */}
+            <ChatInterface onInteraction={handleChatInteraction} />
           </div>
         </div>
       </div>

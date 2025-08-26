@@ -1,46 +1,46 @@
 export const VOICE_AGENT_CONFIG = {
-    // Mapping scenario IDs to LiveKit room configurations
+    // Mapping scenario IDs to LiveKit room configurations with Deepgram voices
     scenarioConfigs: {
       'cafe-1': {
         agentName: 'wingman-emma',
-        scenario: 'Cafe Redezvous',
+        scenario: 'Coffee Shop',
         persona: 'Emma',
-        voice: 'en-US-Neural2-F',
+        voice: 'aura-2-stella-en', // Warm, friendly female voice
         description: 'Practice casual conversation in a coffee shop setting'
       },
       'gym-1': {
-        agentName: 'wingman-taylor',
-        scenario: 'Gym Approach',
-        persona: 'Taylor', 
-        voice: 'en-US-Neural2-D',
+        agentName: 'wingman-alex',
+        scenario: 'Gym',
+        persona: 'Alex', 
+        voice: 'aura-2-zeus-en', // Energetic, motivational voice
         description: 'Practice fitness-focused conversations with a trainer'
       },
       'bookstore-1': {
-        agentName: 'wingman-sam',
-        scenario: 'Bookstore Browse',
-        persona: 'Sam',
-        voice: 'en-US-Neural2-H',
+        agentName: 'wingman-maya',
+        scenario: 'Bookstore',
+        persona: 'Maya',
+        voice: 'aura-2-luna-en', // Thoughtful, creative female voice
         description: 'Practice literary discussions in a bookstore'
       },
       'bar-1': {
         agentName: 'wingman-jordan',
-        scenario: 'Bar Pickup',
+        scenario: 'Bar Social',
         persona: 'Jordan',
-        voice: 'en-US-Neural2-J',
+        voice: 'aura-2-orpheus-en', // Charismatic, social voice
         description: 'Practice social networking in a bar setting'
       },
       'park-1': {
-        agentName: 'wingman-alex',
+        agentName: 'wingman-sam',
         scenario: 'Park Walk',
-        persona: 'Alex',
-        voice: 'en-US-Neural2-C',
+        persona: 'Sam',
+        voice: 'aura-2-aurora-en', // Calm, nature-loving voice
         description: 'Practice mindful conversations during a nature walk'
       },
       'museum-1': {
         agentName: 'wingman-chen',
-        scenario: 'Museum Gallery',
+        scenario: 'Museum',
         persona: 'Dr. Chen',
-        voice: 'en-US-Neural2-A',
+        voice: 'aura-2-arcas-en', // Intellectual, knowledgeable voice
         description: 'Practice intellectual discussions about art and culture'
       }
     },

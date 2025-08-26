@@ -51,7 +51,7 @@ const scenarios: Scenario[] = [
     isPremium: false,
     image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop',
     category: 'Intellectual',
-    personaId: 'sam-literary',
+    personaId: 'maya-literary',
     tags: ['books', 'quiet', 'intellectual', 'afternoon']
   },
   {

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useUser as useClerkUser } from '@clerk/nextjs'
 import { getUser, createUser, updateStreak } from '@/lib/user'
+import { useRouter } from 'next/navigation'
 
 export function useUserData() {
   const { user: clerkUser, isLoaded } = useClerkUser()
   const [userData, setUserData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     const fetchUserData = async () => {

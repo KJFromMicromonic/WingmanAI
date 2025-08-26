@@ -11,7 +11,8 @@ export async function generateAIResponse(
   }
 ) {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    // Use the stable Gemini Pro model instead of flash-lite
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite-001' });
 
     // Filter and format history - Gemini requires history to start with 'user' role
     let history = context.conversationHistory?.map(msg => ({
@@ -53,6 +54,18 @@ export async function generateAIResponse(
     return result.response.text();
   } catch (error) {
     console.error('Gemini API Error:', error);
+    
+    // Check if it's an API key issue
+    if (error?.message?.includes('API key')) {
+      return "I'm having trouble with my configuration. Please check that the API key is set correctly.";
+    }
+    
+    // Check if it's a model availability issue
+    if (error?.message?.includes('model') || error?.message?.includes('not found')) {
+      return "I'm having trouble with the AI model. Let me try again in a moment.";
+    }
+    
+    // Generic fallback response
     return "I'm having trouble responding right now. Could you try again?";
   }
 }
@@ -67,7 +80,7 @@ export async function generateFeedback(
   }
 ) {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite-001' });
 
     const feedbackPrompt = `
       You are a concise, encouraging social-skills coach.
@@ -107,6 +120,16 @@ export async function generateFeedback(
       };
   } catch (error) {
     console.error('Feedback API Error:', error);
+    
+    // Provide more specific error handling
+    if (error?.message?.includes('API key')) {
+      return {
+        rating: 'neutral',
+        message: 'API configuration issue detected.',
+        suggestions: ['Check your API key setup', 'Try again in a moment']
+      };
+    }
+    
     return {
       rating: 'neutral',
       message: 'Thanks for practicing!',
@@ -151,7 +174,7 @@ export async function generateSceneDescription(context: {
   setting: string;
 }) {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite-001' });
 
     const scenePrompt = `
       Create a vivid scene description for this roleplay scenario:
@@ -234,7 +257,7 @@ export async function generateCoachingTips(context: {
   setting: string;
 }): Promise<TCoachingTips> {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-lite-001' });
 
     const tipsPrompt = `
       You are a social-skills coach. Generate coaching guidance as STRICT JSON only.
