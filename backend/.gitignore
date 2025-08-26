@@ -1,0 +1,6 @@
+Lib/
+Scripts/
+service-account.json
+.env
+livekit/
+share/
